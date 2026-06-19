@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pitagwoods.github.io/portal-main-aiyouxi-com-cn/sitemap.xml
