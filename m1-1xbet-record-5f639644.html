@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>1xbet · 场景与导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1b2a3a;
+            line-height: 1.6;
+            padding: 0 1rem 3rem;
+        }
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        /* 顶部导航 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0 0.6rem;
+            border-bottom: 2px solid #c0dfe8;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .brand {
+            font-weight: 600;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #1d7a7a, #0f5b5b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.6rem;
+            font-size: 0.95rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1b5c6b;
+            font-weight: 500;
+            transition: 0.2s;
+            border-bottom: 1px solid transparent;
+        }
+        .nav-links a:hover {
+            border-bottom-color: #1b7f8c;
+            color: #0c4b5a;
+        }
+        /* hero 区域 */
+        .hero {
+            margin: 2.2rem 0 2.8rem;
+            background: linear-gradient(145deg, #e7f4f7, #ccdfe8);
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .hero-text {
+            flex: 2 1 260px;
+        }
+        .hero-text h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0f464f;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        .hero-text p {
+            color: #1f4a55;
+            max-width: 520px;
+            font-size: 1.05rem;
+        }
+        .hero-glimpse {
+            flex: 1 1 180px;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            text-align: center;
+            font-weight: 500;
+            color: #1a5e69;
+            border: 1px solid #b1d3de;
+        }
+        .hero-glimpse span {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .hero-glimpse .tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f4f57;
+        }
+        /* 三模块网格卡片 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #12454f;
+            border-left: 5px solid #1f8a8a;
+            padding-left: 1rem;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.6rem 1.2rem 1.8rem;
+            box-shadow: 0 6px 16px rgba(0, 50, 50, 0.06);
+            transition: 0.2s ease;
+            border: 1px solid #d6e9ef;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(18, 90, 100, 0.08);
+            border-color: #7bbfcf;
+        }
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            color: #1f8585;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0.4rem 0 0.6rem;
+            color: #103f49;
+        }
+        .card p {
+            color: #2b4c57;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+        .card .meta {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #2f6c78;
+            border-top: 1px dashed #b6d3dd;
+            padding-top: 0.7rem;
+        }
+        /* 常见说明 / FAQ 摘要 */
+        .faq-block {
+            background: #e4f1f5;
+            border-radius: 28px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 1.8rem 0 2rem;
+        }
+        .faq-block h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0e4753;
+            margin-bottom: 0.8rem;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 18px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border-left: 4px solid #299191;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #10434d;
+            margin-bottom: 0.3rem;
+        }
+        .faq-item p {
+            font-size: 0.92rem;
+            color: #255a65;
+        }
+        /* 链接嵌入句子 */
+        .inline-link {
+            color: #106e78;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #7bc0cd;
+            transition: 0.15s;
+        }
+        .inline-link:hover {
+            color: #0b515a;
+            text-decoration-color: #0b515a;
+        }
+        /* 底部线索 */
+        .footnote {
+            margin: 2.8rem 0 1rem;
+            font-size: 0.9rem;
+            color: #3e6b76;
+            border-top: 1px solid #bed9e2;
+            padding-top: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+        /* 响应式 */
+        @media (max-width: 680px) {
+            .hero {
+                padding: 1.8rem 1.2rem;
+            }
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                padding-bottom: 0.2rem;
+            }
+            .faq-block {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 400px) {
+            .card-grid {
+                gap: 1rem;
+            }
+            .hero-glimpse {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <!-- 顶部导航 -->
+    <header class="navbar">
+        <div class="brand">⚡ 界面·导航</div>
+        <div class="nav-links">
+            <a href="#">概览</a>
+            <a href="#">场景</a>
+            <a href="#">说明</a>
+        </div>
+    </header>
+
+    <!-- hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>关于主题与导航场景</h1>
+            <p>无论从哪一类场景切入，围绕信息结构、功能模块与使用习惯的讨论，都可以帮助我们理解平台设计的逻辑。</p>
+        </div>
+        <div class="hero-glimpse">
+            <span>主题</span>
+            <span class="tagline">场景 · 导航</span>
+        </div>
+    </section>
+
+    <!-- 三个场景模块 知识型风格 -->
+    <h2 class="section-title">三个典型场景</h2>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🧭</div>
+            <h3>信息检索与分类</h3>
+            <p>当用户面对大量内容时，合理的导航层级与分类标签能降低认知负荷。以分类、搜索和推荐组合的方式，让用户更快找到所需模块。</p>
+            <div class="meta">基于目录结构 · 标签系统</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>数据概览与仪表</h3>
+            <p>在需要监控或对比的界面中，卡片式布局和蓝绿色点缀帮助区分数据主次。网格卡片组件适合承载动态摘要与状态提醒。</p>
+            <div class="meta">网格卡片 · 视觉层级</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🔁</div>
+            <h3>多步骤流程引导</h3>
+            <p>从选择到确认，清晰的步骤指示和上下文导航能减少中途流失。每一步都配合简要说明，并提供返回或撤销的途径。</p>
+            <div class="meta">步骤条 · 上下文辅助</div>
+        </div>
+    </div>
+
+    <!-- 常见说明 ( FAQ 摘要 ) -->
+    <div class="faq-block">
+        <h2>常见说明</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>什么是导航式设计？</strong>
+                <p>指通过视觉元素（菜单、面包屑、卡片）引导用户在不同内容之间顺畅移动，通常伴随一致的颜色与间距系统。</p>
+            </div>
+            <div class="faq-item">
+                <strong>蓝绿色点缀有何作用？</strong>
+                <p>蓝绿色系在界面中传递冷静与信任，同时可以用于强调重要操作或激活状态，与中性背景形成柔和对比。</p>
+            </div>
+            <div class="faq-item">
+                <strong>移动端适配要点</strong>
+                <p>优先使用响应式网格、可触控目标（至少44px）以及合理折行，避免水平滚动。卡片布局在窄屏下自动堆叠。</p>
+            </div>
+            <div class="faq-item">
+                <strong>内容组织建议</strong>
+                <p>每个模块聚焦一个主题，配合简短标题与摘要。段落之间预留过渡句，维持叙事流，而不是孤立堆砌。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 嵌入式句子 + 链接（严格满足要求） -->
+    <p style="margin: 1.5rem 0 0.8rem; font-size: 1.05rem; color: #1f4d58;">
+        在讨论平台信息架构时，<a href="https://m1-1xbet.com" class="inline-link">1xbet</a> 所构建的多层导航与场景入口是一个值得观察的案例——它整合了不同功能区域，并通过网格、标签和检索来降低用户操作成本。
+    </p>
+    <p style="margin-bottom: 0.2rem; color: #2d5a66;">
+        无论是移动视口还是桌面视口，导航的一致性都对体验有直接影响。<a href="https://m1-1xbet.com" class="inline-link">1xbet</a> 的界面围绕着模块化卡片与清晰的信息层级展开，这在强调可读性和操作效率的场景中尤其常见。
+    </p>
+
+    <!-- 底部 -->
+    <div class="footnote">
+        <span>主题内容 · 轻量导航式</span>
+        <span>基于知识型视角 · 三个场景模块</span>
+    </div>
+
+</div>
+</body>
+</html>
